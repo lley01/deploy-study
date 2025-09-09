@@ -13,7 +13,7 @@ jobs:
         run: ls -a
 
       - name: docker login
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }} --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
     
       - name: checkout
         uses: actions/checkout@v5
