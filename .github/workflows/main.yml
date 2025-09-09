@@ -27,5 +27,5 @@ jobs:
       - name:  build spring boot app
         run: |
           cd backend
-          chmod 777 ./nvmw
-          ./nvmw clean package -DskipTests
+          chmod 777 ./mvnw
+          ./mvnw clean package -DskipTests
