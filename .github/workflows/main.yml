@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: dir list print1
         run: ls -a
+
+      - name: docker login
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }} --password-stdin
     
       - name: checkout
         uses: actions/checkout@v5
@@ -29,3 +32,6 @@ jobs:
           cd backend
           chmod 777 ./mvnw
           ./mvnw clean package -DskipTests
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/spring-app:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/spring-app:latest
+          
